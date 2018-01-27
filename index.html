@@ -1,0 +1,75 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Оракул</title>
+		<style>
+		.answer {
+			background-color: lightblue;
+			font-size: 18px;
+			margin-top: 10px;				
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 5px;
+		}
+		img {
+			border-radius: 50%;
+		}
+		button {
+			font-size: 18px;
+			margin-top: 10px;
+			margin-right: 10px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		p {
+			font-weight: bold;
+			font-size: 18px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		.hide {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+
+		function showText() {
+			var inputValue = document.getElementById("question").value;
+
+			var ar = ['Совершенно точно', 'Определенно', 'Несомненно', 'Да', 'Можно на это смело рассчитывать', 'Как мне кажется, да', 'Скорее всего', 'Прогноз положительный', 'По всем признакам - да', 'Ответ как-то мутно выглядит, попробуй еще', 'Попробуй позже', 'Тебе сейчас лучше об этом не знать', 'Невозможно сейчас сказать что-то определенное', 'Сосредоточься и спроси меня опять', 'Я бы не стала на это рассчитывать', 'Мой ответ - нет', 'Мои источники все отрицают', 'Прогноз выглядит неутешительно', 'Сомнительно', 'Не мучай меня своими скучными вопросами, пожалуйста']
+
+			var ar_length = ar.length;
+			var rand_number = Math.floor(Math.random()*(ar_length));
+			var answer = "<p>Вопрос: </p>" + inputValue + "<br>"+ "<p> Оракул говорит: </p>" + ar[rand_number];
+
+			document.getElementById("demo").innerHTML = answer;
+			document.getElementById("demo").className = 'answer';    
+		}
+
+		function showNothing() {
+			document.getElementById("demo").className = 'hide';
+		}
+
+	</script>
+</head>
+
+<body>
+	<h1>Оракул</h1>
+	<div onmouseover="showText()" onmouseout ="showNothing()">
+		<img src="oracul.jpg" alt="Avatar" style="width:300px">
+	</div>
+
+	<form><p>Ваш вопрос: </p><input id="question" type="text"><br>
+	</form>
+ 
+	<button onclick="showText()">Получить ответ!</button>
+	<button onclick="location.href='index.html';">Другой вопрос!</button>
+	<div id="demo"></div>
+
+	<br>
+	<button type="button" onclick="location.href='piano.html';">Пианино!</button>
+</body>
+</html>
