@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Оракул</title>
+		<!-- styles in separate file -->
 		<style>
 		.answer {
 			background-color: lightblue;
@@ -34,14 +35,14 @@
 			display: none;
 		}
 	</style>
+	<!-- script in separate file -->
 	<script type="text/javascript">
+		// moved outside the function, because no need to initialize array on each function execution
+		var ar = ['Совершенно точно', 'Определенно', 'Несомненно', 'Да', 'Можно на это смело рассчитывать', 'Как мне кажется, да', 'Скорее всего', 'Прогноз положительный', 'По всем признакам - да', 'Ответ как-то мутно выглядит, попробуй еще', 'Попробуй позже', 'Тебе сейчас лучше об этом не знать', 'Невозможно сейчас сказать что-то определенное', 'Сосредоточься и спроси меня опять', 'Я бы не стала на это рассчитывать', 'Мой ответ - нет', 'Мои источники все отрицают', 'Прогноз выглядит неутешительно', 'Сомнительно', 'Не мучай меня своими скучными вопросами, пожалуйста']
+		var ar_length = ar.length;
 
 		function showText() {
 			var inputValue = document.getElementById("question").value;
-
-			var ar = ['Совершенно точно', 'Определенно', 'Несомненно', 'Да', 'Можно на это смело рассчитывать', 'Как мне кажется, да', 'Скорее всего', 'Прогноз положительный', 'По всем признакам - да', 'Ответ как-то мутно выглядит, попробуй еще', 'Попробуй позже', 'Тебе сейчас лучше об этом не знать', 'Невозможно сейчас сказать что-то определенное', 'Сосредоточься и спроси меня опять', 'Я бы не стала на это рассчитывать', 'Мой ответ - нет', 'Мои источники все отрицают', 'Прогноз выглядит неутешительно', 'Сомнительно', 'Не мучай меня своими скучными вопросами, пожалуйста']
-
-			var ar_length = ar.length;
 			var rand_number = Math.floor(Math.random()*(ar_length));
 			var answer = "<p>Вопрос: </p>" + inputValue + "<br>"+ "<p> Оракул говорит: </p>" + ar[rand_number];
 
@@ -58,8 +59,10 @@
 
 <body>
 	<h1>Оракул</h1>
-	<div onmouseover="showText()" onmouseout ="showNothing()">
-		<img src="oracul.jpg" alt="Avatar" style="width:300px">
+	<div>
+		<!-- look prettier if events on img -->
+		<!-- its better not to use inline styles style="width:300px", move it to css -->
+		<img onmouseover="showText()" onmouseout ="showNothing()" src="oracul.jpg" alt="Avatar" style="width:300px">
 	</div>
 
 	<form><p>Ваш вопрос: </p><input id="question" type="text"><br>
